@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cordova Mobile | Onsen UI</title>
+        <link rel="stylesheet" type="text/css" href="css/onsenui.min.css">
+        <link rel="stylesheet" type="text/css" href="css/onsen-css-components.min.css">
+        <style>
+            .shadow-box{
+                box-shadow: 0px 9px 10px -3px rgba(74,68,68,0.63);
+                -webkit-box-shadow: 0px 9px 10px -3px rgba(74,68,68,0.63);
+                -moz-box-shadow: 0px 9px 10px -3px rgba(74,68,68,0.63);
+            }
+        </style>
+        <script src="js/onsenui.min.js"></script>
+    </head>
+    <body>
+        <ons-navigator swipeable id="myNavigator" page="pages/beranda.html">
+            <ons-page>
+                <ons-tabbar swipeable position="bottom">
+                    <ons-tab page="pages/beranda.html" label="e-Farm" icon="md-home" active></ons-tab>
+                    <ons-tab page="pages/profil.html" label="Profil" icon="md-face"></ons-tab>
+                    <ons-tab page="pages/transaksi.html" label="Toko" icon="md-shopping-cart"></ons-tab>
+                </ons-tabbar>
+            </ons-page>
+        </ons-navigator>
+    </body>
+
+    <script src="js/load-pages.js"></script>
+    <script>
+        document.addEventListener('prechange', function (event) {
+                document.querySelector('ons-toolbar .center')
+                    .innerHTML = event.tabItem.getAttribute('label');
+            });
+    </script>
+
+    <script>
+        var createAlertDialog = function () {
+            var dialog = document.getElementById('my-alert-dialog');
+
+            if (dialog) {
+                dialog.show();
+            } else {
+                ons.createElement('alert-dialog.html', { append: true })
+                    .then(function (dialog) {
+                        dialog.show();
+                    });
+            }
+        };
+
+        var hideAlertDialog = function () {
+            document
+                .getElementById('my-alert-dialog')
+                .hide();
+        };
+    </script>
+</html>
